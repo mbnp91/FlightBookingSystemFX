@@ -308,6 +308,7 @@ public class Controller {
         myGraph.newEdge(D, F, 2, 7, 11);
         myGraph.newEdge(E, F, 3, 6, 8);
         myGraph.newEdge(E, A, 2, 8, 2);
+        myGraph.newEdge(C, A, 4,4,4);
 
 
         return myGraph;
