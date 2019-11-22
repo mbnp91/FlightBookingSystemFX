@@ -1,7 +1,4 @@
 package sample;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -10,12 +7,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static javafx.collections.FXCollections.observableArrayList;
 
 
 public class Controller {
-    TrainModel m = TrainModel.getInstance();                                                                            // make a model object when you create the controller
-    ObservableList list = FXCollections.observableArrayList();
+  //  TrainModel m = TrainModel.getInstance();
+  //  ObservableList list = FXCollections.observableArrayList();
 
     @FXML
     TextField travelFrom;
@@ -25,14 +21,12 @@ public class Controller {
     TextArea res;
 
     @FXML
-    public void routeHandler(ActionEvent e)
+    public void routeHandler()                                                                                          //ActionEvent actionEvent - var inde i den før. Den gør ikke noget?
     {
         res.setText("This is the shortest route: " + resultForShortestDistance()+ " \n" +
                 "This is the most time efficient route: " + resultForShortestTime() + " \n" +
                 "This is most green route: " + resultForLessCo2());
     }
-
-
 
 
     public String resultForShortestDistance()
@@ -63,6 +57,8 @@ public class Controller {
 
             case "F" : end = g.getVertex("F");
                 break;
+
+            default: res.setText("You cannot travel to that destination" + "\n" +"Please try again!");
         }
 
         Vertex start = null;
@@ -85,6 +81,8 @@ public class Controller {
 
             case "F" : start = g.getVertex("F");
                 break;
+
+            default: res.setText("You cannot travel from that destination" + "\n" +"Please try again!");
         }
 
 
@@ -149,6 +147,8 @@ public class Controller {
 
             case "F" : end = g.getVertex("F");
                 break;
+
+            default: res.setText("You cannot travel to that destination" + "\n" +"Please try again!");
         }
 
         Vertex start = null;
@@ -171,6 +171,8 @@ public class Controller {
 
             case "F" : start = g.getVertex("F");
                 break;
+
+            default: res.setText("You cannot travel from that destination" + "\n" +"Please try again!");
         }
 
         Pair<Integer, Map<Vertex, Vertex>> resultsForTime = g.ShortestTime(start, end);
@@ -231,6 +233,8 @@ public class Controller {
 
             case "F" : end = g.getVertex("F");
                 break;
+
+            default: res.setText("You cannot travel to that destination" + "\n" +"Please try again!");
         }
 
         Vertex start = null;
@@ -253,6 +257,8 @@ public class Controller {
 
             case "F" : start = g.getVertex("F");
                 break;
+
+            default: res.setText("You cannot travel from that destination" + "\n" +"Please try again!");
         }
 
         Pair<Integer, Map<Vertex, Vertex>> resultsForLessCo2 = g.LesserCo2(start, end);
@@ -313,8 +319,6 @@ public class Controller {
 
         return myGraph;
     }
-
-
 
     public class DijkstraPathFinding
     {
@@ -492,8 +496,6 @@ public class Controller {
         }
     }
 
-
-
     class Vertex
     {
         String Name;
@@ -516,7 +518,6 @@ public class Controller {
         }
     }
 
-    //Denne klasse på IKKE ændres!
     class Edge
     {
         private Vertex fromvertex;
@@ -539,16 +540,17 @@ public class Controller {
     }
 }
 
-class TrainModel{                                                                                                       // is a Singleton!
-    private TrainModel()
-    {
+                                                                                                                        /*
+                                                                                                                        //Denne klasse bliver ikke brugt. Det er en Singleton - men bruger den ikke? Hvad gør den godt for?
+                                                                                                                        class TrainModel{// is a Singleton!
+                                                                                                                        private TrainModel()
+                                                                                                                        {
+                                                                                                                        }
+                                                                                                                        static TrainModel inst;
 
-    }
-    static TrainModel inst;
-
-    static TrainModel getInstance()
-    {
-        if(inst==null)inst=new TrainModel();
-        return inst;
-    }
-}
+                                                                                                                        static TrainModel getInstance()
+                                                                                                                        {
+                                                                                                                            if(inst==null)inst = new TrainModel();
+                                                                                                                            return inst;
+                                                                                                                        }
+                                                                                                                        }*/
