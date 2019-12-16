@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.TextField?>
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+            <children>
+                <Button layoutX="79.0" layoutY="110.0" mnemonicParsing="false" onAction="#routeHandler" text="Beregn rute" />
+            <TextField fx:id="travelFrom" prefWidth="150.0" text="Rejser fra"/>
+            <TextField fx:id="travelTo" layoutY="51.0" prefWidth="150.0" text="Rejser til"/>
+            </children>
+        </AnchorPane>
+        <TextArea fx:id="res" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" text="Co2 beregner" textAlignment="CENTER" textFill="#025b36">
+            <font>
+                <Font name="Calibri Light" size="33.0" />
+            </font></Label>
+    </children>
+</GridPane>
